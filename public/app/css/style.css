@@ -1,0 +1,35 @@
+.rcorners2 {
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 30px;
+}
+.rcorners3 {
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding-top: 30px;
+    margin-left: 30px;
+}
+.glyphicon-user{
+    font-size: 800%;
+}
+.foodnumber{
+    width: 30px;
+}
+.userbox{
+    width: 100%;
+}
+.remove-customer{
+    position: absolute;
+    top:20px;
+    right:40px;
+   color:red;
+    font-size: 200%;
+    /*border-bottom-left-radius: 8px;*/
+    /*padding-bottom: 2px;*/
+    /*padding-left: 5px;*/
+    /*background-color: white;*/
+}
+.addnew{
+    font-size: 1200%;
+    color:mediumpurple;
+}

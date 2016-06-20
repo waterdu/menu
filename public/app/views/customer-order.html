@@ -1,0 +1,33 @@
+
+
+{{model.hello}}
+<h1>Order for customer</h1>
+<div class="container">
+
+
+
+    <div class="list-group">
+        <a ng-repeat="order in model.orders" href="#/foodin-order" class="list-group-item">
+
+            <div>Order ID: {{order.id}} <div class="pull-right">{{order.bill}}</div></div>
+           </a>
+
+    </div>
+
+</div>
+
+<footer class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
+            <span class="navbar-brand glyphicon glyphicon-play text-primary pull-left" aria-hidden="true"></span>
+        </a>
+
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                <span class="navbar-brand glyphicon glyphicon-eye-open text-primary pull-left"
+                      aria-hidden="true"></span>
+        </a>
+        <a href="#/profile/{{model.userId}}">
+            <span class="navbar-brand glyphicon glyphicon-user text-primary pull-right" aria-hidden="true"></span>
+        </a>
+    </div>
+</footer>

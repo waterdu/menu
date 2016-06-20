@@ -1,0 +1,43 @@
+<h1>Customers in table {{model.table_id}}</h1>
+<div class="container rcorners3">
+    <div class="row">
+        <div class="col-xs-4 " ng-repeat="customer in model.customers">
+            <div class="form-group">
+                {{customer.customer_id}}
+                <div class="btn btn-info btn-lg userbox">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <div class="remove-customer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </div>
+                    <div>
+                        <a class="btn btn-success" href="#/customer-order/{{customer.customer_id}}" role="button">Check Order</a>
+                        <a class="btn btn-primary" href="#/menu" role="button">New Order</a>
+                        <!--<a class="btn btn-success" href="" role="button"></a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4 " >
+            <div   class="form-group" >
+                <a ng-click="model.addCustomerByTableid()" role="button">
+                <span class="addnew glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
+            <span class="navbar-brand glyphicon glyphicon-play text-primary pull-left" aria-hidden="true"></span>
+        </a>
+
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                <span class="navbar-brand glyphicon glyphicon-eye-open text-primary pull-left"
+                      aria-hidden="true"></span>
+        </a>
+        <a href="#/profile/{{model.userId}}">
+            <span class="navbar-brand glyphicon glyphicon-user text-primary pull-right" aria-hidden="true"></span>
+        </a>
+    </div>
+</footer>

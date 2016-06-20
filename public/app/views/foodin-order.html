@@ -1,0 +1,37 @@
+
+
+{{model.hello}}
+<h1>Food in customer</h1>
+                <div class="container">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>order id</th>
+                            <th>total bill</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="food in model.foods">
+                            <td>{{food.foodname}} </td>
+                            <td>{{food.price}}</td>
+
+                        </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+<footer class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
+            <span class="navbar-brand glyphicon glyphicon-play text-primary pull-left" aria-hidden="true"></span>
+        </a>
+
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                <span class="navbar-brand glyphicon glyphicon-eye-open text-primary pull-left"
+                      aria-hidden="true"></span>
+        </a>
+        <a href="#/profile/{{model.userId}}">
+            <span class="navbar-brand glyphicon glyphicon-user text-primary pull-right" aria-hidden="true"></span>
+        </a>
+    </div>
+</footer>

@@ -1,0 +1,39 @@
+
+<div class="container">
+    <div class="row">
+    <div ng-repeat="type in model.types" class="col-xs-3">
+        <h3>{{type.type_name}}</h3>
+
+            <li ng-repeat="food in type.foods" class="list-group-item">
+                <a href="">{{food.dish_name}}</a>
+                <a href="" class="pull-right">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <input type="text" class="foodnumber" id="number" placeholder="0">
+                    <span class="glyphicon glyphicon-minus"></span>
+                </a>
+                <h5>Price: {{food.price}} CookTime:{{food.cooktime}} </h5>
+                <h5>Discription:{{food.discription}}</h5>
+        </li>
+    </div>
+</div>
+
+
+
+
+
+
+<footer class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
+            <span class="navbar-brand glyphicon glyphicon-play text-primary pull-left" aria-hidden="true"></span>
+        </a>
+
+        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
+                <span class="navbar-brand glyphicon glyphicon-eye-open text-primary pull-left"
+                      aria-hidden="true"></span>
+        </a>
+        <a href="#/profile/{{model.userId}}">
+            <span class="navbar-brand glyphicon glyphicon-user text-primary pull-right" aria-hidden="true"></span>
+        </a>
+    </div>
+</footer>
