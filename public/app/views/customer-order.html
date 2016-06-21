@@ -1,21 +1,17 @@
-
-
-{{model.hello}}
-<h1>Order for customer</h1>
+<h1>Order for customer {{model.customer_id}}</h1>
 <div class="container">
-
-
-
     <div class="list-group">
-        <a ng-repeat="order in model.orders" href="#/foodin-order" class="list-group-item">
+        <div ng-repeat="order in model.orders" href="#/foodin-order" class="list-group-item">
 
-            <div>Order ID: {{order.id}} <div class="pull-right">{{order.bill}}</div></div>
-           </a>
+            <div><a href="#/foodin-order/{{order.order_id}}">Order ID: {{order.order_id}} </a><div class="pull-right">{{order.bill}}
+<a ng-click="model.removeOrderByOrderId(order.order_id)" role="button">
+               <span  class="glyphicon glyphicon-remove text-primary" aria-hidden="true"></span>
+</a>
 
+            </div></div>
+           </div>
     </div>
-
 </div>
-
 <footer class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">

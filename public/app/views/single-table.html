@@ -6,12 +6,14 @@
                 {{customer.customer_id}}
                 <div class="btn btn-info btn-lg userbox">
                     <span class="glyphicon glyphicon-user"></span>
+                    <a ng-click="model.deleteCustomerByCustomerId(customer.customer_id)">
                     <div class="remove-customer">
-                        <span class="glyphicon glyphicon-remove"></span>
+                        <span  class="glyphicon glyphicon-remove"></span>
                     </div>
+                    </a>
                     <div>
                         <a class="btn btn-success" href="#/customer-order/{{customer.customer_id}}" role="button">Check Order</a>
-                        <a class="btn btn-primary" href="#/menu" role="button">New Order</a>
+                        <a ng-click="model.newOrder(customer.customer_id)"   class="btn btn-primary" role="button">New Order</a>
                         <!--<a class="btn btn-success" href="" role="button"></a>-->
                     </div>
                 </div>

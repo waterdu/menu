@@ -20,9 +20,9 @@
 }
 .remove-customer{
     position: absolute;
-    top:20px;
-    right:40px;
-   color:red;
+    top:30px;
+    right:30px;
+   color:orangered;
     font-size: 200%;
     /*border-bottom-left-radius: 8px;*/
     /*padding-bottom: 2px;*/
@@ -31,5 +31,5 @@
 }
 .addnew{
     font-size: 1200%;
-    color:mediumpurple;
+    color:limegreen;
 }

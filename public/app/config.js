@@ -22,7 +22,7 @@
                 controller: "OrderController",
                 controllerAs: "model"
             })
-            .when("/foodin-order", {
+            .when("/foodin-order/:order_id", {
                 templateUrl: "views/foodin-order.html",
                 controller: "FoodInOrderController",
                 controllerAs: "model"

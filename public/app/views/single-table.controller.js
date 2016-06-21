@@ -9,7 +9,8 @@
         vm.hello="do you see me";
         vm.table_id=$routeParams.table_id;
         vm.addCustomerByTableid=addCustomerByTableid;
-
+        vm.deleteCustomerByCustomerId=deleteCustomerByCustomerId;
+        vm.newOrder=newOrder;
 
 
         function init() {
@@ -29,6 +30,22 @@
                     location.reload();
                     //vm.customers = response.data;
                     //console.log(response.data);
+                });
+        }
+        function deleteCustomerByCustomerId(customer_id){
+            console.log(customer_id);
+            Service
+                .deleteCustomerByCustomerId(customer_id)
+                .then(function(response) {
+                    location.reload();
+                });
+        }
+        function newOrder(customer_id){
+            Service
+                .newOrder(customer_id)
+                .then(function(response) {
+                    $location.url("customer-order/"+customer_id);
+                    //location.reload();
                 });
         }
 

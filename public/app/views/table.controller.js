@@ -19,10 +19,8 @@
             Service
                 .getAlltable()
                 .then(function(response) {
-                    vm.tables = response.data
-                   // console.log(response.data);
+                    vm.tables = response.data;
                 });
-           // vm.tables=tables;
         }
         init();
     }

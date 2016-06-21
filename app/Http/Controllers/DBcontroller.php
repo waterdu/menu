@@ -53,16 +53,42 @@ class DBController extends Controller {
 		$allFoodType = DB::select($command);
 		return response() -> json($allFoodType);
 	}
-	public function allTypedFood($typeid) {
-		$command = 'select d.dish_name, d.price, d.isProvided from dish d where d.food_type = ' . $typeid;
+	public function getfoodByTypeId($typeid) {
+		$command = 'select * from dish d where d.food_type = ' . $typeid;
 		$allinType = DB::select($command);
 		return response() -> json($allinType);
 	}
 
+
+
+//about customer
 	public function addCustomerByTableid($tableid) {
 		$newCustomer = DB::insert('insert into customer (table_id) values (?)', [$tableid]);
 		return response() -> json($newCustomer);
 	}
+	public function deleteCustomerByCustomerId($customerid) {
+    		$command = DB::delete('delete from customer where customer_id = ' . $customerid . ';');
+    		return response() -> json($command);
+    }
+	public function getOrderbyCustomerId($customerid) {
+    		$command = DB::select('select so.order_id from single_order so where so.customer_id = ' . $customerid . ';');
+    		return response() -> json($command);
+    }
+//about food
+	public function getFoodByOrderId($orderid) {
+		$command = DB::select('select d.dish_id, d.price,d.dish_name, hasServed from dish d, (select dish_id, hasServed from dish_status where dish_status.order_id =' . $orderid .') as sec2 where sec2.dish_id = d.dish_id;');
+		return response() -> json($command);
+	}
+	public function newOrder($customerid) {
+    		$hasPlaced = false;
+    		$hasAllServed = false;
+    		$place = DB::insert('insert into single_order (customer_id, hasPlaced, hasAllServed) values (?, ?, ?)', [$customerid, $hasPlaced, $hasAllServed]);
+    		return response() -> json($place);
+    }
+    public function removeOrderByOrderId($orderid){
+	$command = DB::delete('delete from single_order where order_id = ' . $orderid . ';');
+    		return response() -> json($command);
+    }
 
 
 }

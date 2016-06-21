@@ -1,23 +1,22 @@
 
-
-{{model.hello}}
-<h1>Food in customer</h1>
+<h1>Food in Order {{model.order_id}}</h1>
                 <div class="container">
                     <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>order id</th>
-                            <th>total bill</th>
+                            <th>Price</th>
+                            <th>HasServed</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="food in model.foods">
-                            <td>{{food.foodname}} </td>
+                            <td>{{food.dish_name}} </td>
                             <td>{{food.price}}</td>
-
+                            <td ng-show="food.hasServed==1">yes</td>
+                            <td ng-show="food.hasServed==0">No</td>
                         </tr>
                         </tbody>
-
                     </table>
                 </div>
 <footer class="navbar navbar-default navbar-fixed-bottom">

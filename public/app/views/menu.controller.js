@@ -62,9 +62,5 @@
         }
         init();
 
-        vm.register = register;
-        function register() {
-
-        }
     }
 })();
