@@ -30,8 +30,9 @@ class DBController extends Controller {
 
 
 	public function getAlltable() {
-		$alltable = DB::select('SELECT * FROM menu.dining_table');
-		return response() -> json($alltable);
+		$alltable = DB::select('SELECT t.table_id, t.table_size, t.isAvailable, count(c.table_id) as
+        								customer_number from dining_table t left join customer c on t.table_id = c.table_id group by table_id;');
+        		return response() -> json($alltable);
 	}
 	// to return the id of customers who sit on the table with the given table id
 	public function match($tableid) {
@@ -76,8 +77,8 @@ class DBController extends Controller {
     }
 //about food
 	public function getFoodByOrderId($orderid) {
-		$command = DB::select('select d.dish_id, d.price,d.dish_name, hasServed from dish d, (select dish_id, hasServed from dish_status where dish_status.order_id =' . $orderid .') as sec2 where sec2.dish_id = d.dish_id;');
-		return response() -> json($command);
+		$command = DB::select('select d.dish_id, sec2.status_id, d.dish_name, d.price, hasServed from dish d, (select dish_id, id as status_id, hasServed from dish_status where dish_status.order_id =' . $orderid .') as sec2 where sec2.dish_id = d.dish_id;');
+        return response() -> json($command);
 	}
 	public function newOrder($customerid) {
     		$hasPlaced = false;
@@ -89,6 +90,47 @@ class DBController extends Controller {
 	$command = DB::delete('delete from single_order where order_id = ' . $orderid . ';');
     		return response() -> json($command);
     }
+
+	public function addFoodToOrder($dish_id,$order_id) {
+    		$hasServed = false;
+    		$place = DB::insert('insert into dish_status (dish_id, order_id, hasServed) values (?, ?, ?)', [$dish_id, $order_id, $hasServed]);
+    		return response() -> json($place);
+    }
+    public function removeFoodByOrderId($dish_id,$order_id) {
+
+            $command = DB::delete('delete from dish_status where dish_status.dish_id = ' . $dish_id . ' and dish_status.order_id = ' . $order_id .';');
+            return response() -> json($command);
+    }
+    public function removeFoodByDishstatusId($dishstatus_id) {
+
+                $command = DB::delete('delete from dish_status where id = ' . $dishstatus_id . ';');
+                return response() -> json($command);
+      }
+public function updateServeByStatusId($status_id) {
+		$command = DB::update('UPDATE dish_status set dish_status.hasServed = case
+    when dish_status.hasServed = 1 Then 0
+    when dish_status.hasServed = 0 Then 1
+    End
+    where id = ' . $status_id . ';');
+		return response() -> json($command);
+	}
+
+    public function getBillByCustomerId($customerid) {
+		$command = 'select sum(d.price) as total from dish d, (select dish_id from single_order so, dish_status ds where so.order_id = ds.order_id and customer_id =' . $customerid . ') as group2 where d.dish_id = group2.dish_id;';
+		$Allin = DB::select($command);
+		return response() -> json($Allin);
+	}
+	public function getBillByTableId($tableid) {
+    		$command = DB::select('select sum(d.price) as  total from dish d,
+    				(select ds.dish_id from dish_status ds,
+    				(select so.order_id from single_order so,
+    				(select c.customer_id from customer c where c.table_id = ' . $tableid . ') as group1
+    				where group1.customer_id = so.customer_id) as group2
+    				where ds.order_id = group2.order_id) as group3
+    				where d.dish_id = group3.dish_id;');
+    		return response() -> json($command);
+    }
+
 
 
 }

@@ -1,17 +1,14 @@
+<h2>Restaurant Ordering System</h2>
 
-
-{{model.hello}}
-need function:
-<h1>Pick A Table</h1>
+<h3>Pick A Table</h3>
 <div class="container">
     <div class="row">
         <div class="col-xs-4 rcorners2" ng-repeat="table in model.tables">
         <a href="#/table/{{table.table_id}}">
-           <h4>Table</h4>
-            <h4>Table id:{{table.table_id}} </h4>
+            <h4>Dining Table</h4>
+            <h4>ID:{{table.table_id}} </h4>
             <h4>Size:{{table.table_size}} </h4>
-            <!--<h4>Table id:{{table.table_id}} </h4>-->
-            <!--<h4>{{table.customer}}</h4>-->
+            <h4>Customer Number: {{table.customer_number}} </h4>
         </a>
         </div>
     </div>

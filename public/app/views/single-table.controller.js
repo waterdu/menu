@@ -11,6 +11,7 @@
         vm.addCustomerByTableid=addCustomerByTableid;
         vm.deleteCustomerByCustomerId=deleteCustomerByCustomerId;
         vm.newOrder=newOrder;
+        vm.getBillByTableId = getBillByTableId;
 
 
         function init() {
@@ -48,6 +49,18 @@
                     //location.reload();
                 });
         }
+
+        function getBillByTableId(table_id) {
+            vm.bill = null;
+            Service
+                .getBillByTableId(table_id)
+                .then(function (response) {
+                    console.log(response.data[0].total);
+                    vm.bill = response.data[0].total;
+                });
+        }
+
+
 
     }
 })();

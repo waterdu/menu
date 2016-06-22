@@ -12,7 +12,7 @@
                 controllerAs: "model"
             })
             //click a table go to single table page
-            .when("/menu", {
+            .when("/menu/:order_id", {
                 templateUrl: "views/menu.html",
                 controller: "MenuController",
                 controllerAs: "model"

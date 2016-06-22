@@ -1,4 +1,13 @@
-<h1>Customers in table {{model.table_id}}</h1>
+<h3>Customers in table {{model.table_id}}</h3>
+<div class="form-group">
+    <a class="btn btn-success" ng-click="model.getBillByTableId(model.table_id)" role="button">Check Out</a>
+    <div ng-show="model.bill" class="alert alert-warning">
+        {{model.bill}}$
+    </div>
+</div>
+
+
+
 <div class="container rcorners3">
     <div class="row">
         <div class="col-xs-4 " ng-repeat="customer in model.customers">
@@ -28,18 +37,3 @@
         </div>
     </div>
 </div>
-<footer class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
-            <span class="navbar-brand glyphicon glyphicon-play text-primary pull-left" aria-hidden="true"></span>
-        </a>
-
-        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
-                <span class="navbar-brand glyphicon glyphicon-eye-open text-primary pull-left"
-                      aria-hidden="true"></span>
-        </a>
-        <a href="#/profile/{{model.userId}}">
-            <span class="navbar-brand glyphicon glyphicon-user text-primary pull-right" aria-hidden="true"></span>
-        </a>
-    </div>
-</footer>

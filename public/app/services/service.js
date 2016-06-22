@@ -22,7 +22,12 @@
             deleteCustomerByCustomerId:deleteCustomerByCustomerId,
             getFoodByOrderId:getFoodByOrderId,
             newOrder:newOrder,
-            removeOrderByOrderId:removeOrderByOrderId
+            removeOrderByOrderId: removeOrderByOrderId,
+            addFoodToOrder: addFoodToOrder,
+            removeFoodByDishstatusId: removeFoodByDishstatusId,
+            updateServeByStatusId: updateServeByStatusId,
+            getBillByCustomerId: getBillByCustomerId,
+            getBillByTableId: getBillByTableId
         };
         return api;
         //about customer
@@ -73,5 +78,32 @@
             var url = "api/removeOrderByOrderId/" + order_id;
             return $http.delete(url);
         }
+
+        function addFoodToOrder(dish_id, order_id) {
+            var url = "api/addFoodToOrder/" + dish_id + "/" + order_id;
+            return $http.get(url);
+        }
+
+        function removeFoodByDishstatusId(dishstatus_id) {
+            var url = "api/removeFoodByDishstatusId/" + dishstatus_id;
+            return $http.delete(url);
+        }
+
+        function updateServeByStatusId(status_id) {
+            var url = "api/updateServeByStatusId/" + status_id;
+            return $http.post(url);
+        }
+
+        function getBillByCustomerId(customer_id) {
+            var url = "api/getBillByCustomerId/" + customer_id;
+            return $http.get(url);
+        }
+
+        function getBillByTableId(table_id) {
+            var url = "api/getBillByTableId/" + table_id;
+            return $http.get(url);
+        }
+
+
     }
 })();

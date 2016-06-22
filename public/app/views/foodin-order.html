@@ -1,5 +1,9 @@
+<div class="container">
+    <div>
+        <h3>Food in Order {{model.order_id}}</h3>
+        <a class="btn btn-success" href="#/menu/{{model.order_id}}" role="button">Add Food</a>
+    </div>
 
-<h1>Food in Order {{model.order_id}}</h1>
                 <div class="container">
                     <table class="table table-hover">
                         <thead>
@@ -7,30 +11,26 @@
                             <th>order id</th>
                             <th>Price</th>
                             <th>HasServed</th>
+                            <th>Cancel Order</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="food in model.foods">
                             <td>{{food.dish_name}} </td>
                             <td>{{food.price}}</td>
-                            <td ng-show="food.hasServed==1">yes</td>
-                            <td ng-show="food.hasServed==0">No</td>
+                            <td ng-show="food.hasServed==1">yes <a class="btn btn-primary"
+                                                                   ng-click="model.updateServeByStatusId(food.status_id)"
+                                                                   role="button">Change</a></td>
+                            <td ng-show="food.hasServed==0">No <a class="btn btn-primary"
+                                                                  ng-click="model.updateServeByStatusId(food.status_id)"
+                                                                  role="button">Change</a></td>
+                            <td>
+                                <a ng-click="model.removeFoodByDishstatusId(food.status_id)" role="button">
+                                    <span class="glyphicon glyphicon-remove text-primary" aria-hidden="true"></span>
+                                </a>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-<footer class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
-            <span class="navbar-brand glyphicon glyphicon-play text-primary pull-left" aria-hidden="true"></span>
-        </a>
-
-        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
-                <span class="navbar-brand glyphicon glyphicon-eye-open text-primary pull-left"
-                      aria-hidden="true"></span>
-        </a>
-        <a href="#/profile/{{model.userId}}">
-            <span class="navbar-brand glyphicon glyphicon-user text-primary pull-right" aria-hidden="true"></span>
-        </a>
-    </div>
-</footer>
+</div>

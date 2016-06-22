@@ -33,7 +33,16 @@ Route::get('api/getOrderbyCustomerId/{customer_id}', 'DBController@getOrderbyCus
 //about food
 Route::get('api/getFoodByOrderId/{customer_id}', 'DBController@getFoodByOrderId');
 Route::get('api/newOrder/{customer_id}', 'DBController@newOrder');
+Route::get('api/addFoodToOrder/{dish_id}/{order_id}', 'DBController@addFoodToOrder');
+Route::delete('api/removeFoodByOrderId/{dish_id}/{order_id}', 'DBController@removeFoodByOrderId');
+Route::post('api/updateServeByStatusId/{status_id}', 'DBController@updateServeByStatusId');
+
+//updateServeByStatusId
 
 //about order
+Route::delete('api/removeFoodByDishstatusId/{dishstatus_id}', 'DBController@removeFoodByDishstatusId');
 Route::delete('api/removeOrderByOrderId/{order_id}', 'DBController@removeOrderByOrderId');
 
+//about bill
+Route::get('api/getBillByCustomerId/{customer_id}', 'DBController@getBillByCustomerId');
+Route::get('api/getBillByTableId/{table_id}', 'DBController@getBillByTableId');

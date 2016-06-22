@@ -1,4 +1,5 @@
 <h1>Order for customer {{model.customer_id}}</h1>
+
 <div class="container">
     <div class="list-group">
         <div ng-repeat="order in model.orders" href="#/foodin-order" class="list-group-item">
@@ -12,18 +13,9 @@
            </div>
     </div>
 </div>
-<footer class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
-            <span class="navbar-brand glyphicon glyphicon-play text-primary pull-left" aria-hidden="true"></span>
-        </a>
-
-        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
-                <span class="navbar-brand glyphicon glyphicon-eye-open text-primary pull-left"
-                      aria-hidden="true"></span>
-        </a>
-        <a href="#/profile/{{model.userId}}">
-            <span class="navbar-brand glyphicon glyphicon-user text-primary pull-right" aria-hidden="true"></span>
-        </a>
+<div class="form-group">
+    <a class="btn btn-success" ng-click="model.getBillByCustomerId(model.customer_id)" role="button">Check Out</a>
+    <div ng-show="model.bill" class="alert alert-warning">
+        {{model.bill}}$
     </div>
-</footer>
+</div>

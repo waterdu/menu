@@ -8,6 +8,8 @@
         var vm = this;
         vm.hello="do you see me";
         vm.order_id=$routeParams.order_id;
+        vm.removeFoodByDishstatusId = removeFoodByDishstatusId;
+        vm.updateServeByStatusId = updateServeByStatusId;
 
         vm.types=       [
             {id: "123", typename: "appetizer",    size: "2",    firstName: "Alice",  lastName: "Wonder"  },
@@ -32,6 +34,22 @@
                 });
         }
         init();
+        function removeFoodByDishstatusId(dishstatus_id) {
+            Service
+                .removeFoodByDishstatusId(dishstatus_id)
+                .then(function (response) {
+                    location.reload();
+                });
+
+        }
+
+        function updateServeByStatusId(status_id) {
+            Service
+                .updateServeByStatusId(status_id)
+                .then(function (response) {
+                    location.reload();
+                });
+        }
 
     }
 })();
